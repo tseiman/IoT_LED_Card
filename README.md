@@ -6,10 +6,10 @@ From this 16 channels 3 (RGB) x 4 LEDs = 12 Channels are used.
 The IoT card uses the UART and a UART to I2C converter to communicate to the RGB controller.
 UART to I2C conversion is done with SC18IM700 (https://www.nxp.com/docs/en/data-sheet/SC18IM700.pdf)
 
-![LED IoT Card](https://raw.githubusercontent.com/tseiman/IoT_Led_Card/master/IoT_Led_Card_Board.png)
+![LED IoT Card](https://raw.githubusercontent.com/tseiman/IoT_Led_Card/main/IoT_Led_Card_Board.png)
 
 
-![LED IoT Card](https://raw.githubusercontent.com/tseiman/IoT_Led_Card/master/Plastic-Parts/LEDDemo%20v8.png)
+![LED IoT Card](https://raw.githubusercontent.com/tseiman/IoT_Led_Card/main/Plastic-Parts/LEDDemo%20v8.png)
 
 
 ## Communicating to I2C via the SC18IM700 converter
@@ -30,10 +30,11 @@ An example communication to write:
 Another Example:
 
 ```
-This sets the read pointer to the first register (Register MODE1) of the RGB driver by writing 1 byte (0x01) with the value 0x0.
+// This sets the read pointer to the first register (Register MODE1) 
+// of the RGB driver by writing 1 byte (0x01) with the value 0x0.
 0x53 0x80 0x01 0x00 0x50
 
-This reads one byte from the RGB drivers's first register 
+// This reads one byte from the RGB drivers's first register 
 0x53 0x81 0x01 0x50
 ```
 Please follow the datasheets of the RGB driver's PCA9685PW and the datasheet of the UART to I2C converter SC18IM700 tightly as the communication with this IoT Card is fully based on it. 
@@ -47,25 +48,41 @@ However the RGB needs to be initilized (the commands are all documented in the P
 0x53 0x80 0x02 0xfa 0x00 0x50     		// addresses register ALL_LED_ON_L (0xfa)
 0x53 0x80 0x03 0xfc 0x10 0x00 0x50		// addresses register ALL_LED_OFF_L (0xfc) 
 						
-0x53 0x80 0x02 0x01 0x10 0x50			// addressing MODE2 register (0x01). Due to the design of the LED driver 
-						// with the LEDs (LEDs are directly connected to the driver without FETs) 
-						// the logic is inverted. This logic negation can be configured in MODE2 
-						// register of RGB driver. For this setup INVRT bit must be HIGH and 
-						// OUTDRV bit must be LOW - see the PCA9685 Rev.4 datasheet p.29, Table 12. for
-						// further information
+0x53 0x80 0x02 0x01 0x10 0x50			// addressing MODE2 register (0x01). 
+										// Due to the design of the LED driver 
+										// with the LEDs (LEDs are directly connected 
+										// to the driver without FETs) 
+										// the logic is inverted. This logic negation 
+										// can be configured in MODE2 
+										// register of RGB driver. For this setup 
+										// INVRT bit must be HIGH and 
+										// OUTDRV bit must be LOW - see the PCA9685 
+										// Rev.4 datasheet p.29, Table 12. for
+										// further information
 
-0x53 0x80 0x01 0x00 0x50 0x53 0x81 0x01 0x50	// this reads the first (0x00) MODE1 register by first setting the read 
-						// pointer to first (0x00) register and then read 1 byte. It should return 0x11.
-						// as autoincrement of the register is disabled by default on power up
-						// we can directly write now to MODE1 register:
-0x53 0x80 0x02 0x00 0x31 0x50			// the value 0x31 in MODE1 register which disables RESTART and enables 
-						// Register Auto Increment Please see PCA9685 Rev.4 datasheet p.14, Table 5. 
-						// for further information, the PWM oscilator is still of at this stage
+0x53 0x80 0x01 0x00 0x50 0x53 0x81 0x01 0x50	// this reads the first (0x00) MODE1 
+												// register by first setting the read 
+												// pointer to first (0x00) register 
+												// and then read 1 byte. It should 
+												// return 0x11.
+												// as autoincrement of the register 
+												// is disabled by default on power up
+												// we can directly write now to 
+												// MODE1 register:
+0x53 0x80 0x02 0x00 0x31 0x50					// the value 0x31 in MODE1 register
+												// which disables RESTART and enables 
+												// Register Auto Increment Please 
+												// see PCA9685 Rev.4 datasheet p.14, 
+												// Table 5. 
+												// for further information, the PWM 
+												// oscilator is still of at this stage
 						
 
-0x53 0x80 0x02 0xFE 0x79 0x50			// This set the PRE_SCALE Register (0xfe) to 50hz (can be adapted to different freq.)
+0x53 0x80 0x02 0xFE 0x79 0x50			// This set the PRE_SCALE Register (0xfe) 
+										// to 50hz (can be adapted to different freq.)
 
-0x53 0x80 0x02 0x00 0x21 0x50			// Changes in MODE1 register from Low power mode (Oscilators=Off) to normal mode (Osc.=On)
+0x53 0x80 0x02 0x00 0x21 0x50			// Changes in MODE1 register from Low power 
+										// mode (Oscilators=Off) to normal mode (Osc.=On)
 
 /* now PCA9685 needs 500us to stabilize the oscilator */
                                     
@@ -85,10 +102,13 @@ In this example the OFF registers are always on 0x0 (please check the PCA9685 da
 An example to set the brightnes of one channel:
 
 ```
-53 80 03 06 00 00 50    53 80 03 08 ff 0f 50  	// The LED0 channel (first LED, Red) the LED_OFF Register is at address 0x06
-//  LED0_OFF to 0x0	 LED0_ON to 4095 (max)	// the LED0 channel LED_ON Register is at 0x08
-						// This sequence sets LED0 channel to maximum brightness.
-						// Note that the LOW byte is transfered first - then the HIGH byte
+53 80 03 06 00 00 50    53 80 03 08 ff 0f 50  	// The LED0 channel (first LED, Red) 
+												// the LED_OFF Register is at address 0x06
+//  LED0_OFF to 0x0	 LED0_ON to 4095 (max)		// the LED0 channel LED_ON Register is at 0x08
+												// This sequence sets LED0 channel 
+												// to maximum brightness.
+												// Note that the LOW byte is transfered 
+												// first - then the HIGH byte
 
 ```
 
@@ -188,7 +208,7 @@ function(event) {
 
 Writing brightness information:
 
-```
+```javascript
 function(event) {
 
 	
