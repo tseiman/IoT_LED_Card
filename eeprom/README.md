@@ -17,7 +17,7 @@ Adjust the Variables:
 * $(WP77XX_TOOLCHAIN_PREFIX)
 * $(WP77XX_TOOLCHAIN_DIR)
 
-At the moment it is set to be compiled for Sierra Wireless WP76XX modules. You might adjust it e.g. to
+At the moment it is set to be compiled for Sierra Wireless WP77XX modules. You might adjust it e.g. to
 $(WP77XX_TOOLCHAIN_DIR) or similar for an other module series.
 
 Compile the **writeFile2Eeprom** by `make` in this folder. 
