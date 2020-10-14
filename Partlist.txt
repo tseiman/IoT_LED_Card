@@ -1,0 +1,72 @@
+Partlist
+
+Exported from LED IoT Card.sch at 29.09.20 15:35
+
+EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
+
+Assembly variant: 
+
+Part     Value                       Device           Package   Library                 Sheet
+
+C1       1u                          C-EUC0805K       C0805K    rcl                     1
+C2       100n                        C-EUC0603K       C0603K    rcl                     1
+C3       100n                        C-EUC0603K       C0603K    rcl                     1
+C4       100n                        C-EUC0603K       C0603K    rcl                     1
+IC1      CAT24C32             YI-GT3 24C64ST          TSSOP8    microchip               1
+LED0                                 0.13_RGB_LEDPLCC P-LCC-4-3 LEDs                    1
+LED1                                 0.13_RGB_LEDPLCC P-LCC-4-3 LEDs                    1
+LED2                                 0.13_RGB_LEDPLCC P-LCC-4-3 LEDs                    1
+LED3                                 0.13_RGB_LEDPLCC P-LCC-4-3 LEDs                    1
+Q1       BSS138                      BSS123           SOT23     transistor-small-signal 1
+
+R1       10k                         R-EU_R0402       R0402     rcl                     1
+R2       10k                         R-EU_R0402       R0402     rcl                     1
+R3       10k                         R-EU_R0402       R0402     rcl                     1
+R4       10k                         R-EU_R0402       R0402     rcl                     1
+R5       10k                         R-EU_R0402       R0402     rcl                     1
+
+R6       220                         R-EU_R0402       R0402     rcl                     1
+R9       220                         R-EU_R0402       R0402     rcl                     1
+R12      220                         R-EU_R0402       R0402     rcl                     1
+R15      220                         R-EU_R0402       R0402     rcl                     1
+
+R7       150                         R-EU_R0402       R0402     rcl                     1
+R8       150                         R-EU_R0402       R0402     rcl                     1
+R10      150                         R-EU_R0402       R0402     rcl                     1
+R11      150                         R-EU_R0402       R0402     rcl                     1
+R13      150                         R-EU_R0402       R0402     rcl                     1
+R14      150                         R-EU_R0402       R0402     rcl                     1
+R16      150                         R-EU_R0402       R0402     rcl                     1
+R17      150                         R-EU_R0402       R0402     rcl                     1
+
+R18      4k3                         R-EU_R0402       R0402     rcl                     1
+R19      4k3                         R-EU_R0402       R0402     rcl                     1
+R20      4k3                         R-EU_R0402       R0402     rcl                     1
+
+R21      1k                          R-EU_R0402       R0402     rcl                     1
+
+R22      100                         R-EU_R0402       R0402     rcl                     1
+
+
+U$2      PCA9685PW                   PCA9685PW        TSSOP28   i2c-led-controller      1
+U$7      SC18IM700IPWS8HP            SC18IM700IPWS8HP TSSOP16   SC18IM700IPW            1
+
+
+-------------
+
+
+1x           1u                          C-EUC0805K       C0805K    rcl                     1           	OK R - Conf
+3x           100n                        C-EUC0603K       C0603K    rcl                     1 				OK R - Conf
+4x		                                 0.13_RGB_LEDPLCC P-LCC-4-3 LEDs                    1       6x		OK R - Conf
+1x 		     CAT24C32             YI-GT3 24C64ST          TSSOP8    microchip               1 				OK D - Conf
+1x		     PCA9685PW                   PCA9685PW        TSSOP28   i2c-led-controller      1       4x		OK D - Conf
+1x		     SC18IM700IPWS8HP            SC18IM700IPWS8HP TSSOP16   SC18IM700IPW            1       4x		OK D - Conf
+1x			 BSS138                      BSS123           SOT23     transistor-small-signal 1 				OK D - Conf
+5x 		     10k                         R-EU_R0402       R0402     rcl                     1    			OK R - Conf
+4x		     220                         R-EU_R0402       R0402     rcl                     1   			OK R - Conf
+8x       	 150                         R-EU_R0402       R0402     rcl                     1   			OK R - Conf
+3x			 4k3                         R-EU_R0402       R0402     rcl                     1 				OK R - Conf
+1x			 1k                          R-EU_R0402       R0402     rcl                     1 				OK R - Conf
+1x			 100                         R-EU_R0402       R0402     rcl                     1 				OK R - Conf
+
+
