@@ -49,40 +49,40 @@ However the RGB needs to be initilized (the commands are all documented in the P
 0x53 0x80 0x03 0xfc 0x10 0x00 0x50		// addresses register ALL_LED_OFF_L (0xfc) 
 						
 0x53 0x80 0x02 0x01 0x10 0x50			// addressing MODE2 register (0x01). 
-										// Due to the design of the LED driver 
-										// with the LEDs (LEDs are directly connected 
-										// to the driver without FETs) 
-										// the logic is inverted. This logic negation 
-										// can be configured in MODE2 
-										// register of RGB driver. For this setup 
-										// INVRT bit must be HIGH and 
-										// OUTDRV bit must be LOW - see the PCA9685 
-										// Rev.4 datasheet p.29, Table 12. for
-										// further information
+						// Due to the design of the LED driver 
+						// with the LEDs (LEDs are directly connected 
+						// to the driver without FETs) 
+						// the logic is inverted. This logic negation 
+						// can be configured in MODE2 
+						// register of RGB driver. For this setup 
+						// INVRT bit must be HIGH and 
+						// OUTDRV bit must be LOW - see the PCA9685 
+						// Rev.4 datasheet p.29, Table 12. for
+						// further information
 
 0x53 0x80 0x01 0x00 0x50 0x53 0x81 0x01 0x50	// this reads the first (0x00) MODE1 
-												// register by first setting the read 
-												// pointer to first (0x00) register 
-												// and then read 1 byte. It should 
-												// return 0x11.
-												// as autoincrement of the register 
-												// is disabled by default on power up
-												// we can directly write now to 
-												// MODE1 register:
-0x53 0x80 0x02 0x00 0x31 0x50					// the value 0x31 in MODE1 register
-												// which disables RESTART and enables 
-												// Register Auto Increment Please 
-												// see PCA9685 Rev.4 datasheet p.14, 
-												// Table 5. 
-												// for further information, the PWM 
-												// oscilator is still of at this stage
+						// register by first setting the read 
+						// pointer to first (0x00) register 
+						// and then read 1 byte. It should 
+						// return 0x11.
+						// as autoincrement of the register 
+						// is disabled by default on power up
+						// we can directly write now to 
+						// MODE1 register:
+0x53 0x80 0x02 0x00 0x31 0x50			// the value 0x31 in MODE1 register
+						// which disables RESTART and enables 
+						// Register Auto Increment Please 
+						// see PCA9685 Rev.4 datasheet p.14, 
+						// Table 5. 
+						// for further information, the PWM 
+						// oscilator is still of at this stage
 						
 
 0x53 0x80 0x02 0xFE 0x79 0x50			// This set the PRE_SCALE Register (0xfe) 
-										// to 50hz (can be adapted to different freq.)
+						// to 50hz (can be adapted to different freq.)
 
 0x53 0x80 0x02 0x00 0x21 0x50			// Changes in MODE1 register from Low power 
-										// mode (Oscilators=Off) to normal mode (Osc.=On)
+						// mode (Oscilators=Off) to normal mode (Osc.=On)
 
 /* now PCA9685 needs 500us to stabilize the oscilator */
                                     
@@ -103,12 +103,12 @@ An example to set the brightnes of one channel:
 
 ```
 53 80 03 06 00 00 50    53 80 03 08 ff 0f 50  	// The LED0 channel (first LED, Red) 
-												// the LED_OFF Register is at address 0x06
-//  LED0_OFF to 0x0	 LED0_ON to 4095 (max)		// the LED0 channel LED_ON Register is at 0x08
-												// This sequence sets LED0 channel 
-												// to maximum brightness.
-												// Note that the LOW byte is transfered 
-												// first - then the HIGH byte
+						// the LED_OFF Register is at address 0x06
+//  LED0_OFF to 0x0	 LED0_ON to 4095 (max)	// the LED0 channel LED_ON Register is at 0x08
+						// This sequence sets LED0 channel 
+						// to maximum brightness.
+						// Note that the LOW byte is transfered 
+						// first - then the HIGH byte
 
 ```
 
