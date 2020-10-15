@@ -1,6 +1,6 @@
 # IoT LED Card
 
-IoT card for Sierra Wireless MangOH (https://mangoh.io) boards.
+IoT card for Sierra Wireless MangOH (https://mangoh.io) boards and FX30 ready made IoT Device.
 4 Controllable RGB LEDs. The RGB LEDs are driven via a 16 channel RGB controler PCA9685PW (https://www.nxp.com/docs/en/data-sheet/PCA9685.pdf). 
 From this 16 channels 3 (RGB) x 4 LEDs = 12 Channels are used.
 The IoT card uses the UART and a UART to I2C converter to communicate to the RGB controller.
