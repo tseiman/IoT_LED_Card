@@ -6,6 +6,10 @@ From this 16 channels 3 (RGB) x 4 LEDs = 12 Channels are used.
 The IoT card uses the UART and a UART to I2C converter to communicate to the RGB controller.
 UART to I2C conversion is done with SC18IM700 (https://www.nxp.com/docs/en/data-sheet/SC18IM700.pdf)
 
+![LED IoT Card](https://raw.githubusercontent.com/tseiman/IoT_Led_Card/main/IoT_LED_Card_pic2.png)
+
+
+
 ![LED IoT Card](https://raw.githubusercontent.com/tseiman/IoT_Led_Card/main/IoT_LED_Card_pic.png)
 
 
