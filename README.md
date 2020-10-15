@@ -95,9 +95,11 @@ However the RGB needs to be initilized (the commands are all documented in the P
 
 /* now PCA9685 needs 500us to stabilize the oscilator */
                                     
-0x53 0x80 0x02 0x00 0xa1 0x50			// after 500us the initialisation can be finalized,
-						// After that we switch in MODE1 register the restart Bit (0xa1) 
-						// - after restart the PCA9685 is operational
+0x53 0x80 0x02 0x00 0xa1 0x50			// after 500us the initialisation 
+						// can be finalized. After that 
+						// we switch in MODE1 register the restart 
+						// Bit (0xa1) - after restart the PCA9685 
+						// is operational
     
 ```
 
