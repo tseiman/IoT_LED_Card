@@ -8,7 +8,9 @@ UART to I2C conversion is done with SC18IM700 (https://www.nxp.com/docs/en/data-
 
 ![LED IoT Card](https://raw.githubusercontent.com/tseiman/IoT_Led_Card/main/IoT_Led_Card_Board.png)
 
-![LED IoT Card](https://raw.githubusercontent.com/tseiman/IoT_Led_Card/main/IoT_Led_Card_pic.png)
+
+![LED IoT Card](https://raw.githubusercontent.com/tseiman/IoT_Led_Card/main/IoT_LED_Card_pic.png)
+
 
 ![LED IoT Card](https://raw.githubusercontent.com/tseiman/IoT_Led_Card/main/Plastic-Parts/LEDDemo%20v8.png)
 
