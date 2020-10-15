@@ -84,7 +84,7 @@ However the RGB needs to be initilized (the commands are all documented in the P
 						// see PCA9685 Rev.4 datasheet p.14, 
 						// Table 5. 
 						// for further information, the PWM 
-						// oscilator is still of at this stage
+						// oscilator is still off at this stage
 						
 
 0x53 0x80 0x02 0xFE 0x79 0x50			// This set the PRE_SCALE Register (0xfe) 
